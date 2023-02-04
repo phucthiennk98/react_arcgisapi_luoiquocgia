@@ -8,9 +8,9 @@ function Map() {
     useEffect(
         ()=>{
             let view;
-        loadModules(["esri/views/MapView","esri/WebMap","esri/layers/FeatureLayer"],{
+        loadModules(["esri/views/MapView","esri/WebMap","esri/layers/FeatureLayer","esri/widgets/Legend"],{
             css:true
-            }).then(([MapView,WebMap,FeatureLayer])=>{
+            }).then(([MapView,WebMap,FeatureLayer,Legend])=>{
                 const webmap = new WebMap({
                     basemap :'topo-vector'
                 })
@@ -84,7 +84,17 @@ function Map() {
                     }
                 });
                 webmap.add(featurelayer2,1)
+
+                let legend = new Legend({
+                    view: view,
+                 
+                                       
+                  });
+                  
+                  view.ui.add(legend, "bottom-right");
             })
+            
+            
 
         return  ()=>{
                 if (!!view){
@@ -97,7 +107,7 @@ function Map() {
         })
         //Return html tag:    
         return (
-        <div id="map" style={{height:750}} ref={MapEl}>
+        <div id="map" style={{height:'100vh'}} ref={MapEl}>
 
         </div>
         )
