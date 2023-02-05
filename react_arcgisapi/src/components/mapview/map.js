@@ -86,8 +86,21 @@ function Map() {
                 webmap.add(featurelayer2,1)
 
                 let legend = new Legend({
-                    view: view,
-                 
+                    view: view, 
+                    layerInfos:[
+                                                         
+                        {
+                            title: "TDQG",
+                            layer: featurelayer1
+                        
+                        },
+                        {
+                            title: "DCQG",
+                            layer: featurelayer2,
+                            
+                        }
+                        
+                    ]
                                        
                   });
                   
